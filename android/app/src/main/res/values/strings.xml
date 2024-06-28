@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AwesomeProject</string>
+    <string name="facebook_app_id">1258787938423642</string>
+    <string name="facebook_client_token">5e2706f1884e8393b372940dd9498fb9</string>
+    <string name="default_web_client_id">985636086381-cnunr4otn15gbmg00o7ttqqmn08ggeif.apps.googleusercontent.com</string>
+    <string name="default_notification_channel_id">default_channel</string>
+</resources>
