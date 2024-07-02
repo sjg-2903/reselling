@@ -1,5 +1,6 @@
 import PushNotification from 'react-native-push-notification';
 
+console.log('Creating notification channel...');
 PushNotification.createChannel(
   {
     channelId: "default-channel-id", // The id of the channel

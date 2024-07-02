@@ -26,51 +26,53 @@ import TopTabNavigator from './src/App/Components/News/TopTabNavigator';
 import BottomTabNavigator from './src/App/BottomTabNavigator';
 import NoInternet from './src/App/Components/Home/NoInternet';
 
-
 const Stack = createNativeStackNavigator();
-
-async function requestUserPermission() {
-  const authStatus = await messaging().requestPermission();
-  const enabled = authStatus === messaging.AuthorizationStatus.AUTHORIZED || authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-
-  if (enabled) {
-    console.log('Authorization status:', authStatus);
-  }
-}
 
 const App = () => {
   useEffect(() => {
+    // Request permission to receive notifications
+    const requestUserPermission = async () => {
+      const authStatus = await messaging().requestPermission();
+      const enabled = authStatus === messaging.AuthorizationStatus.AUTHORIZED || authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+      if (enabled) {
+        console.log('Authorization status:', authStatus);
+      }
+    };
+
     requestUserPermission();
 
-    // Get FCM token for this device
+    // Get the device token
     messaging().getToken().then(token => {
-      console.log('FCM Token:', token);
+      console.log('Device FCM Token:', token);
+    }).catch(error => {
+      console.error('Error getting FCM token:', error);
     });
 
-    // Listen to whether the token changes
-    return messaging().onTokenRefresh(token => {
+    // Handle foreground messages
+    const unsubscribeForeground = messaging().onMessage(async remoteMessage => {
+      console.log('A new FCM message arrived:', JSON.stringify(remoteMessage));
+    });
+
+    // Handle background messages
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+      console.log('Message handled in the background:', remoteMessage);
+    });
+
+    // Handle token refresh
+    const unsubscribeTokenRefresh = messaging().onTokenRefresh(token => {
       console.log('FCM Token refreshed:', token);
     });
-  }, []);
 
-  useEffect(() => {
-    // Handle foreground messages
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('A new FCM message arrived!', remoteMessage);
-      // Handle your message as required
-    });
-
-    // Handle background and quit state messages
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!', remoteMessage);
-    });
-
-    return unsubscribe;
+    return () => {
+      unsubscribeForeground();
+      unsubscribeTokenRefresh();
+    };
   }, []);
 
   useEffect(() => {
     // Handle notification opened from background state
-    messaging().onNotificationOpenedApp(remoteMessage => {
+    const unsubscribeNotificationOpened = messaging().onNotificationOpenedApp(remoteMessage => {
       console.log('Notification caused app to open from background state:', remoteMessage.notification);
     });
 
@@ -80,6 +82,8 @@ const App = () => {
         console.log('Notification caused app to open from quit state:', remoteMessage.notification);
       }
     });
+
+    return unsubscribeNotificationOpened;
   }, []);
 
   return (

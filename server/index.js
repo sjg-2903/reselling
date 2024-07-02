@@ -7,7 +7,8 @@ const path = require('path');
 const app = express();
 const admin = require('firebase-admin');
 
-const serviceAccount = require('./config/serviceAccountkey.js.json'); 
+const serviceAccount = require('./config/serviceAccountkey.js'); 
+console.log(serviceAccount)
 
 
 admin.initializeApp({
