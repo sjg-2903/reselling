@@ -304,9 +304,10 @@ const styles = StyleSheet.create({
     },
     subheading: {
         fontFamily: 'Poppins-Black',
-        fontSize: 13,
+        fontSize: 12,
         fontWeight: '700',
         textAlign: 'center',
+        marginTop:-5,
         marginBottom: 20,
     },
     inputContainer: {
