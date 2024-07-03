@@ -16,7 +16,7 @@ const SegmentWithLike = ({ onRefresh }) => {
 
   const fetchSegments = async () => {
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/segmentone`);
+      const response = await axios.get(`${IP_ADDRESS}/segmentone`);
       setSegments(response.data);
     } catch (error) {
       console.error('Error fetching segments:', error);
@@ -37,7 +37,7 @@ const SegmentWithLike = ({ onRefresh }) => {
     return (
       <>
         <View style={styles.container}>
-          <Image source={{ uri: `http://${IP_ADDRESS}:3005/${item.imageSource}` }} style={styles.icon1} />
+          <Image source={{ uri: `${IP_ADDRESS}/${item.imageSource}` }} style={styles.icon1} />
           <View style={styles.textcontainer}>
             <Text style={styles.text}>{truncatedTitle}</Text>
             <Text numberOfLines={2} style={styles.text1}>{item.description}</Text>

@@ -22,7 +22,7 @@ const ResetPassword = () => {
         }
     
         try {
-            const response = await axios.post(`http://${IP_ADDRESS}:3005/request-password-reset`, { email });
+            const response = await axios.post(`${IP_ADDRESS}/request-password-reset`, { email });
             console.log('Response:', response);
             const { data } = response;
             if (data.message) {

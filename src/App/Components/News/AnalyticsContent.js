@@ -19,7 +19,7 @@ const AnalyticsContent = () => {
         </TouchableOpacity>
         <Text style={styles.analyticsText}>{title}</Text>
       </View>
-      <Image source={{ uri: `http://${IP_ADDRESS}:3005/${contentimage}` }} style={styles.contentImage} resizeMode="cover" />
+      <Image source={{ uri: `${IP_ADDRESS}/${contentimage}` }} style={styles.contentImage} resizeMode="cover" />
       <Text style={styles.date}>Uploaded on: {uploadDate}</Text>
       <View style={styles.content}>
         <Text style={styles.heading}>{heading}</Text>

@@ -15,7 +15,7 @@ const IS = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`http://${IP_ADDRESS}:3005/image-brand`);
+        const response = await axios.get(`${IP_ADDRESS}/image-brand`);
         setImages(response.data); // Assuming response.data is an array of image URLs
       } catch (error) {
         console.error('Error fetching images:', error);

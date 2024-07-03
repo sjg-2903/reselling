@@ -26,7 +26,7 @@ const LegoItem = () => {
   const fetchLegoData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/legoone`);
+      const response = await axios.get(`${IP_ADDRESS}/legoone`);
       console.log(response)
       setLegoData(response.data);
     } catch (error) {
@@ -54,7 +54,7 @@ const LegoItem = () => {
           <View key={lego._id} style={styles.container}>
             <View style={styles.imageContainer}>
               <Image
-                source={{ uri: `http://${IP_ADDRESS}:3005/${lego.imageSource}` }}
+                source={{ uri: `${IP_ADDRESS}/${lego.imageSource}` }}
                 style={styles.image}
               />
             </View>

@@ -22,7 +22,7 @@ const SearchBar = () => {
     const fetchSearchResults = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://${IP_ADDRESS}:3005/search?term=${searchTerm}`);
+            const response = await axios.get(`${IP_ADDRESS}/search?term=${searchTerm}`);
             setSearchResults(response.data.filter(result =>
                 result.title.toLowerCase().includes(searchTerm.toLowerCase())
             ));
@@ -63,7 +63,7 @@ const SearchBar = () => {
                     {searchResults.map((result) => (
                         <TouchableOpacity key={result._id} style={styles.resultContainer} onPress={() => handleResultPress(result)}>
                             <Image
-                                source={{ uri: `http://${IP_ADDRESS}:3005/${result.imageSource}` }}
+                                source={{ uri: `${IP_ADDRESS}/${result.imageSource}` }}
                                 style={styles.resultImage}
                                 resizeMode="cover"
                             />

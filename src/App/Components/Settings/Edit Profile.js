@@ -57,7 +57,7 @@ function EditProfile() {
         name: name,
         image: image
       };
-      const res = await axios.post(`http://${IP_ADDRESS}:3005/updateuser`, formData);
+      const res = await axios.post(`${IP_ADDRESS}/updateuser`, formData);
       if (res.data.message === "User data updated successfully") {
       ToastAndroid.show('Profile Updated Successfully', ToastAndroid.SHORT);
       navigation.navigate('Settings');

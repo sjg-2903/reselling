@@ -25,7 +25,7 @@ const Analytics = () => {
   const fetchAnalyticsData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/analyticsone`);
+      const response = await axios.get(`${IP_ADDRESS}/analyticsone`);
       setAnalyticsData(response.data);
     } catch (error) {
       setError('Error fetching analytics data');
@@ -52,7 +52,7 @@ const Analytics = () => {
           <View key={analytics._id} style={styles.container}>
             <View style={styles.imageContainer}>
               <Image
-                source={{ uri: `http://${IP_ADDRESS}:3005/${analytics.imageSource}` }}
+                source={{ uri: `${IP_ADDRESS}/${analytics.imageSource}` }}
                 style={styles.image}
                 resizeMode='cover'
               />

@@ -17,7 +17,7 @@ const HMTab = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/hmones`);
+      const response = await axios.get(`${IP_ADDRESS}/hmones`);
       console.log(response.data); // Ensure the response structure matches expected data
       if (response.data && response.data.length > 0) {
         setSegmentData(response.data[0]); // Assuming response.data is an array with a single item
@@ -73,7 +73,7 @@ const HMTab = () => {
     >
       <View style={styles.container}>
         <Image
-          source={{ uri: `http://${IP_ADDRESS}:3005/${segmentData.imageSource}` }}
+          source={{ uri: `${IP_ADDRESS}/${segmentData.imageSource}` }}
           style={styles.icon1}
         />
         <View>

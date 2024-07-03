@@ -25,7 +25,7 @@ const Coupons = () => {
   const fetchCouponsData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/couponsone`);
+      const response = await axios.get(`${IP_ADDRESS}/couponsone`);
       setCouponsData(response.data);
     } catch (error) {
       setError('Error fetching coupons data');
@@ -52,7 +52,7 @@ const Coupons = () => {
           <View key={coupons._id} style={styles.container}>
             <View style={styles.imageContainer}>
               <Image
-                source={{ uri: `http://${IP_ADDRESS}:3005/${coupons.imageSource}` }}
+                source={{ uri: `${IP_ADDRESS}/${coupons.imageSource}` }}
                 style={styles.image}
                 resizeMode='cover'
               />

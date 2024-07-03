@@ -24,7 +24,7 @@ const Toy = ({ route }) => {
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <DetailsHeader />
       <View style={styles.container}>
-        <Image source={{ uri:`http://${IP_ADDRESS}:3005/${legoData.contentimage}`}} style={styles.backgroundImage} />
+        <Image source={{ uri:`${IP_ADDRESS}/${legoData.contentimage}`}} style={styles.backgroundImage} />
         <Image source={require('../../assets/images/App/legoicon.png')} style={styles.iconImage} />
         <Text style={styles.text}>{legoData.title}</Text>
       </View>

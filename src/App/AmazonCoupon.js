@@ -23,7 +23,7 @@ const AmazonCoupon = ({ route }) => {
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <DetailsHeader />
       <View style={styles.container}>
-       <Image source={{ uri: `http://${IP_ADDRESS}:3005/${segmentData.contentimage}` }} style={styles.amazonimage} />
+       <Image source={{ uri: `${IP_ADDRESS}/${segmentData.contentimage}` }} style={styles.amazonimage} />
         <Text style={styles.amazontext}>{segmentData.title}</Text>
       </View>
       <View style={styles.container1}>

@@ -57,7 +57,7 @@ const Settings = () => {
             const storedToken = await AsyncStorage.getItem('token'); // Retrieve token from AsyncStorage
             if (storedToken) {
                 setToken(storedToken); // Set token state
-                const response = await axios.post(`http://${IP_ADDRESS}:3005/userdata`, { token: storedToken }, {
+                const response = await axios.post(`${IP_ADDRESS}/userdata`, { token: storedToken }, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${storedToken}`

@@ -16,7 +16,7 @@ const BrandSegment = ({ id }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/amazonone`); // Replace with your backend URL and endpoint
+      const response = await axios.get(`${IP_ADDRESS}/amazonone`); // Replace with your backend URL and endpoint
       setSegmentData(response.data);
       setLoading(false);
     } catch (error) {

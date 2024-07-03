@@ -26,7 +26,7 @@ const Home = ({ route }) => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/segmentone`);
+      const response = await axios.get(`${IP_ADDRESS}/segmentone`);
       setSegments(response.data);
     } catch (error) {
       console.error('Error fetching segments:', error);

@@ -25,7 +25,7 @@ const NewsPage = () => {
   const fetchNewsData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3005/newone`);
+      const response = await axios.get(`${IP_ADDRESS}/newone`);
       setNewsData(response.data);
     } catch (error) {
       setError('Error fetching news data');
@@ -52,7 +52,7 @@ const NewsPage = () => {
           <View key={news._id} style={styles.container}>
             <View style={styles.imageContainer}>
               <Image
-                source={{ uri: `http://${IP_ADDRESS}:3005/${news.imageSource}` }}
+                source={{ uri: `${IP_ADDRESS}/${news.imageSource}` }}
                 style={styles.image}
                 resizeMode='cover'
               />

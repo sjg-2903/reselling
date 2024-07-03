@@ -16,7 +16,7 @@ const Imageslider = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`http://${IP_ADDRESS}:3005/image-list`);
+        const response = await axios.get(`${IP_ADDRESS}/image-list`);
         setImages(response.data); // Assuming response.data is an array of image URLs
       } catch (error) {
         console.error('Error fetching images:', error);

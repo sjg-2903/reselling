@@ -63,7 +63,7 @@ const SignUp = () => {
 
   const sendGoogleUserData = async (fdata) => {
     try {
-      const response = await axios.post(`http://${IP_ADDRESS}:3005/googleSignIn`, {
+      const response = await axios.post(`${IP_ADDRESS}/googleSignIn`, {
         name: fdata.name,
         email: fdata.email,
         image: fdata.photo
@@ -127,7 +127,7 @@ const SignUp = () => {
 
   const sendFacebookUserData = async (fdata) => {
     try {
-      const response = await axios.post(`http://${IP_ADDRESS}:3005/facebookSignIn`, {
+      const response = await axios.post(`${IP_ADDRESS}/facebookSignIn`, {
         name: fdata.name,
         image: fdata.picture.data.url
       });
@@ -225,7 +225,7 @@ const SignUp = () => {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `http://${IP_ADDRESS}:3005/signup`,
+        url: `${IP_ADDRESS}/signup`,
         headers: {
           'Content-Type': 'application/json'
         },

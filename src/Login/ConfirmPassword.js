@@ -41,7 +41,7 @@ const ConfirmPassword = () => {
         console.log('New Password:', newPassword);
 
         try {
-            const response = await axios.post(`http://${IP_ADDRESS}:3005/confirm-password-reset`, {
+            const response = await axios.post(`${IP_ADDRESS}/confirm-password-reset`, {
                 email,
                 resetToken,
                 verificationCode,
